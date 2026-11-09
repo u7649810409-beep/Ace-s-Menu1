@@ -108,17 +108,17 @@ public class PinkMenuClient implements ClientModInitializer {
     }
 
     // ---------------- Flacher, durchsichtiger Button ----------------
+    // Achtung: In ButtonWidget gibt es eine innere Klasse "Text". Deshalb hier immer
+    // net.minecraft.text.Text voll ausschreiben.
     static class FlatButton extends ButtonWidget {
         boolean selected = false;
-        
-        public void drawIcon(DrawContext context, int mouseX, int mouseY, float delta) {
-        }
 
-        FlatButton(int x, int y, int width, int height, Text message, ButtonWidget.PressAction onPress) {
+        FlatButton(int x, int y, int width, int height, net.minecraft.text.Text message, ButtonWidget.PressAction onPress) {
             super(x, y, width, height, message, onPress, DEFAULT_NARRATION_SUPPLIER);
         }
 
-        public void renderWidget(DrawContext context, int mouseX, int mouseY, float delta) {
+        // In 1.21.11 zeichnet der Button seinen Inhalt ueber diese Methode.
+        public void drawIcon(DrawContext context, int mouseX, int mouseY, float delta) {
             int x = getX();
             int y = getY();
             int w = getWidth();
@@ -130,13 +130,11 @@ public class PinkMenuClient implements ClientModInitializer {
             drawBox(context, x, y, w, h, fill, line);
 
             TextRenderer tr = MinecraftClient.getInstance().textRenderer;
-            Text msg = getMessage();
+            net.minecraft.text.Text msg = getMessage();
             context.drawTextWithShadow(tr, msg, x + (w - tr.getWidth(msg)) / 2, y + (h - 8) / 2,
                     selected ? 0xFFFFFFFF : 0xFFFFE6FA);
         }
     }
-
-    // ---------------- Flacher Regler ----------------
     static class FlatSlider extends SliderWidget {
         private final String key;
 
