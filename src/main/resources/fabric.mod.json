@@ -1,0 +1,17 @@
+{
+  "schemaVersion": 1,
+  "id": "pinkmenu",
+  "version": "${version}",
+  "name": "Pink Menu",
+  "description": "Ingame settings menu with a purple-pink gradient design.",
+  "license": "MIT",
+  "environment": "client",
+  "entrypoints": {
+    "client": ["com.example.pinkmenu.PinkMenuClient"]
+  },
+  "depends": {
+    "fabricloader": ">=0.15.0",
+    "minecraft": "1.21.11",
+    "fabric-api": "*"
+  }
+}
