@@ -110,6 +110,9 @@ public class PinkMenuClient implements ClientModInitializer {
     // ---------------- Flacher, durchsichtiger Button ----------------
     static class FlatButton extends ButtonWidget {
         boolean selected = false;
+        
+        public void drawIcon(DrawContext context, int mouseX, int mouseY, float delta) {
+        }
 
         FlatButton(int x, int y, int width, int height, Text message, ButtonWidget.PressAction onPress) {
             super(x, y, width, height, message, onPress, DEFAULT_NARRATION_SUPPLIER);
